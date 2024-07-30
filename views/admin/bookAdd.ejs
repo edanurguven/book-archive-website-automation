@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include('../partials/head.ejs') %>
+  <body>
+    <%- include('../partials/headerAdmin.ejs') %>
+    <section class="m-5">
+      <div class="container">
+        <h1 class="mt-3 text-center">Kitap Ekle</h1>
+        <div class="row justify-content-center">
+          <div class="col-sm-8 bg-light border border-info p-4">
+            <form method="post">
+              <input type="hidden" name="_csrf" value="<%=csrfToken%>" />
+              <input type="hidden" name="id" />
+              <div class="form-group row mb-2 mt-3">
+                <label for="title" class="col-sm-3 col-form-label"
+                  >Kitap Adı</label
+                >
+                <div class="col-sm-9">
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="name"
+                    name="name"
+                    placeholder="İsim"
+                  />
+                </div>
+              </div>
+              <div class="form-group row mb-2">
+                <label for="description" class="col-sm-3 col-form-label"
+                  >Açıklama</label
+                >
+                <div class="col-sm-9">
+                  <textarea
+                    name="description"
+                    id="description"
+                    class="form-control"
+                  ></textarea>
+                </div>
+              </div>
+              <div class="form-group row mb-2 mt-3">
+                <label for="author" class="col-sm-3 col-form-label"
+                  >Kitap Yazarı</label
+                >
+                <div class="col-sm-9">
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="author"
+                    name="author"
+                    placeholder="Yazar"
+                  />
+                </div>
+              </div>
+              <div class="form-group row mb-2 mt-3">
+                <label for="url" class="col-sm-3 col-form-label"
+                  >Kitap Resmi</label
+                >
+                <div class="col-sm-9">
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="url"
+                    name="url"
+                    placeholder="Kitap Resmi URL'si"
+                  />
+                </div>
+              </div>
+              <div class="form-group row mb-2 mt-3">
+                <label for="price" class="col-sm-3 col-form-label"
+                  >Kitap Fiyatı</label
+                >
+                <div class="col-sm-9">
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="price"
+                    name="price"
+                    placeholder="Ücret"
+                  />
+                </div>
+              </div>
+              <div class="form-group row justify-content-end mb-2">
+                <div class="col-sm-9">
+                  <button type="submit" class="btn btn-primary">Save</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+    <%- include('../partials/footer.ejs') %> <%-
+    include('../partials/script.ejs') %>
+  </body>
+</html>

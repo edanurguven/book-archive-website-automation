@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include('../partials/head.ejs') %>
+  <body>
+    <%- include('../partials/headerUser.ejs') %>
+    <section class="m-5">
+      <div class="container">
+        <h1 class="mt-3 text-center">Kitap Detay</h1>
+        <div class="row justify-content-center">
+          <div class="col-sm-8 bg-light border border-info p-4">
+            <div class="row">
+              <!-- Sol Tarafta Resim -->
+              <div class="col-md-4 mb-3">
+                <img src="<%= data.url %>" class="img-fluid" alt="Ürün Resmi" />
+              </div>
+              <!-- Sağ Tarafta Detaylar -->
+              <div class="col-md-8">
+                <div class="mb-2 mt-3">
+                  <h5>Kitap Adı</h5>
+                  <p><%= data.name %></p>
+                </div>
+                <div class="mb-2">
+                  <h5>Açıklama</h5>
+                  <p><%= data.description %></p>
+                </div>
+                <div class="mt-3">
+                  <button
+                    class="btn btn-primary"
+                    onclick="window.history.back();"
+                  >
+                    Geri Dön
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <%- include('../partials/footer.ejs') %> <%-
+    include('../partials/script.ejs') %>
+  </body>
+</html>

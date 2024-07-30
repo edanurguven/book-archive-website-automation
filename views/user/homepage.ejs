@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include('../partials/head.ejs') %>
+  <style>
+    .card {
+      width: 22rem;
+      height: 27rem; /* Kartların aynı yükseklikte olmasını sağlamak için */
+    }
+    .card-img-top {
+      width: 100%;
+      height: 12rem; /* Resimlerin aynı yükseklikte olmasını sağlamak için */
+      object-fit: contain; /* Resimlerin kendi boyutlarında kalmasını sağlar */
+      background-color: white; /* Kalan alanın beyaz olmasını sağlar */
+    }
+    .card-body {
+      display: flex;
+      flex-direction: column;
+    }
+  </style>
+  <body>
+    <%- include('../partials/headerUser.ejs') %>
+    <div class="space100"></div>
+    <h3>DUYURULAR</h3>
+            <div class="tablo listTopicView">
+                <table id="myTable" class="table ">
+                    <thead class="thead-dark">
+                      <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Title</th>
+                        <th scope="col">Explain</th>
+                         <th scope="col">Func</th>
+                      </tr>
+                        <!-- Diğer sütunlar -->
+                      </tr>
+                    </thead>
+                    <% function truncateText(text, maxLength) { %> <% if (text.length >
+        maxLength) { %> <%= text.substring(0, maxLength) + "..." %> <% } else {
+        %> <%= text %> <% } %> <% } %>
+                    <% data.forEach((element,index) => { %>
+                        <tr>
+                          <th><%= index %></th>
+                          <td><%= element.title %></td>
+                          <td><%= truncateText(element.exp, 100) %></td>
+                          <td>
+                            <a
+                              href="/user/anc/detail/<%= element.id %>"
+                              class="btn btn-primary"
+                              >Detail</a
+                            >
+                            
+                          </td>
+                        </tr>
+                        <% }) %>
+                      </tbody>
+                  </table>
+            </div>
+    <script>
+        $(function () {
+          $(".delete-btn").click(function () {
+            //listedeki click botununa tıklandığında çalışacak jquery kodları
+            let id = $(this).data("id"); //delete butonu üzerinden data-id ve data-title attribute'leri ile bilgiler çekiliyor.
+            let title = $(this).data("title");
+            $(".modal-body #id").text(id); //modalbox üzerindeki id id'li label'ın text'i set ediliyor
+            $(".modal-body #title").text(title); //modalbox üzerindeki title id'li label'ın text'i set ediliyor
+            $(".modal-footer #yes").attr("href", "/admin/anc/delete/" + id); //Linkli Evet butonunun href attribute'i set ediliyor
+            $(".modal-body #ancid").attr("value", id); //hidden input'un value değeri anouncemnet id'ye set ediliyor.
+          });
+        });
+      </script>
+  
+      <script>
+        $(document).ready(function () {
+          $("#myTable").DataTable({          
+              searching: true, // Arama işlevini etkinleştirir
+              searchPlaceholder: "Arama...", // Arama kutusu metnini özelleştirir
+              search: "",
+              //searchCols: [1, 3], // Başlangıçta arama kutusu boş olurs
+          }); // 'myTable' id'li tabloyu DataTable olarak etkinleştirir
+        });
+      </script>
+    <%- include('../partials/footer.ejs') %> <%-
+    include('../partials/script.ejs') %>
+  </body>
+</html>

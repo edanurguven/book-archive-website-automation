@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include('../partials/head.ejs') %>
+  <body>
+    <%- include('../partials/headerAdmin.ejs') %>
+    <section class="m-5">
+      <div class="container">
+        <h1 class="mt-3 text-center">Duyuru Ekle</h1>
+        <div class="row justify-content-center">
+          <div class="col-sm-8 bg-light border border-info p-4">
+            <form method="post">
+              <input type="hidden" name="id" />
+              <input type="hidden" name="_csrf" value="<%=csrfToken%>"/>
+              <div class="form-group row mb-2 mt-3">
+                <label for="title" class="col-sm-3 col-form-label"
+                  >Başlık</label
+                >
+                <div class="col-sm-9">
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="title"
+                    name="title"
+                    placeholder="Konu"
+                  />
+                </div>
+              </div>
+              <div class="form-group row mb-2">
+                <label for="exp" class="col-sm-3 col-form-label"
+                  >Açıklama</label
+                >
+                <div class="col-sm-9">
+                  <textarea
+                    name="exp"
+                    id="exp"
+                    class="form-control"
+                  ></textarea>
+                </div>
+              </div>
+              </div>
+              <div class="form-group row justify-content-end mb-2">
+                <div class="col-sm-9">
+                  <button type="submit" class="btn btn-primary">Ekle</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+    <%- include('../partials/footer.ejs') %> <%-
+    include('../partials/script.ejs') %>
+  </body>
+</html>

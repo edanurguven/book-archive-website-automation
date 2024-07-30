@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include('../partials/head.ejs') %>
+  <style>
+    .card {
+      width: 22rem;
+      height: 27rem; /* Kartların aynı yükseklikte olmasını sağlamak için */
+    }
+    .card-img-top {
+      width: 100%;
+      height: 12rem; /* Resimlerin aynı yükseklikte olmasını sağlamak için */
+      object-fit: contain; /* Resimlerin kendi boyutlarında kalmasını sağlar */
+      background-color: white; /* Kalan alanın beyaz olmasını sağlar */
+    }
+    .card-body {
+      display: flex;
+      flex-direction: column;
+    }
+  </style>
+  <body>
+    <%- include('../partials/headerAdmin.ejs') %>
+    <div class="m-5">
+      <div>
+        <h1 class="mt-3 text-center">Kitap Listesi</h1>
+      </div>
+    </div>
+    <section class="m-5 p-5" style="text-align: center">
+      <div class="row">
+        <% function truncateText(text, maxLength) { %> <% if (text.length >
+        maxLength) { %> <%= text.substring(0, maxLength) + "..." %> <% } else {
+        %> <%= text %> <% } %> <% } %> <% books.forEach(book => { %>
+        <div class="col-md-3 mb-4">
+          <div class="card">
+            <img
+              class="card-img-top"
+              src="<%= book.url %>"
+              alt="Card image cap"
+            />
+            <div class="card-body">
+              <h5 class="card-title"><%= book.name %></h5>
+              <p class="card-text"><%= truncateText(book.description, 25) %></p>
+              <div class="row justify-content-around">
+                <div class="col-auto">
+                  <a href="/admin/book/edit/<%=book.id %>">
+                    <button type="button" class="btn btn-primary">
+                      Güncelle
+                    </button>
+                  </a>
+                </div>
+                <a href="/admin/book/delete/<%=book.id %>">
+                  <div class="col-auto">
+                    <button type="button" class="btn btn-danger">Sil</button>
+                  </div>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <% }) %>
+      </div>
+    </section>
+    <div class="m-5 p-5" style="text-align: center">
+      <a href="/admin/book/add">
+        <div class="col-auto">
+          <button type="button" class="btn btn-success">Kitap Ekle</button>
+        </div>
+      </a>
+    </div>
+    <%- include('../partials/footer.ejs') %> <%-
+    include('../partials/script.ejs') %>
+  </body>
+</html>

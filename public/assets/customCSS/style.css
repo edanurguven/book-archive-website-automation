@@ -1,0 +1,33 @@
+.listTopicView{
+    margin:100px;
+}
+
+.tablo{
+    display: flex; /* `flex` özelliği, `div`'i flexbox kapsayıcı haline getirir. */
+}
+
+.space100{
+    height: 100px;
+}
+
+
+.cardTitle {
+    background-color: #f76d37;  
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.cardBody{
+    background-color:white ;
+}
+.cardFooter {
+    background-color: #f76d37;  
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.cardStyle {
+    border: 1px solid #f76d37; 
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
